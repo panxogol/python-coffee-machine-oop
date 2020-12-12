@@ -6,10 +6,10 @@ from money_machine import MoneyMachine
 def start(menu=Menu(), coffee_maker=CoffeeMaker(), money_machine=MoneyMachine()):
     # TODO 1: Prompt user asking what would you like?
     answer_list = ["espresso", "latte", "cappuccino", "off", "report"]
-    answer = input("What would you like? (espresso/latte/cappuccino): ").lower()
+    answer = input(f"What would you like? ({menu.get_items()}): ").lower()
     while answer not in answer_list:
         print("Wrong answer. Please type again.")
-        answer = input("What would you like? (espresso/latte/cappuccino): ").lower()
+        answer = input(f"What would you like? ({menu.get_items()}): ").lower()
 
     # TODO 2: Turn off the coffee machine by entering off to the prompt
     if answer == "off":
@@ -19,6 +19,7 @@ def start(menu=Menu(), coffee_maker=CoffeeMaker(), money_machine=MoneyMachine())
     # TODO 3: Print Report
     elif answer == "report":
         coffee_maker.report()
+        money_machine.report()
 
     # TODO 4: Check resources suficient
     elif menu.find_drink(answer) is not None:
